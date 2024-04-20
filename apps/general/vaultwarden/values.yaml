@@ -17,9 +17,12 @@ env:
   #    If not set, the admin panel is disabled.
   #    [[ref]](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page#secure-the-admin_token)
   - name: ADMIN_TOKEN
-    value: 387203ruobjafd80asfgbueaASDU&!@BY@)dasdnaosdas@$.
+    valueFrom:
+          secretKeyRef:
+            name: vault-secrets
+            key: adminToken
   - name: SIGNUPS_ALLOWED
-    value: false
+    value: true
 service:
   # -- Configures service settings for the chart. Normally this does not need to be modified.
   # @default -- See [values.yaml](./values.yaml)
