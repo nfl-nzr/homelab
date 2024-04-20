@@ -1,0 +1,58 @@
+image:
+  # -- image repository
+  repository: ghcr.io/dani-garcia/vaultwarden
+  # -- image pull policy
+  pullPolicy: IfNotPresent
+  # -- image tag
+  tag: 1.30.5-alpine
+
+controller:
+  # -- Set the controller upgrade strategy
+  strategy: RollingUpdate
+
+# -- environment variables. [[ref]](https://github.com/dani-garcia/vaultwarden/blob/main/.env.template)
+# @default -- See [values.yaml](./values.yaml)
+env:
+  # -- Token for the admin interface, preferably use a long random string.
+  #    If not set, the admin panel is disabled.
+  #    [[ref]](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page#secure-the-admin_token)
+  - name: ADMIN_TOKEN
+    value: 387203ruobjafd80asfgbueaASDU&!@BY@)dasdnaosdas@$.
+  - name: SIGNUPS_ALLOWED
+    value: false
+service:
+  # -- Configures service settings for the chart. Normally this does not need to be modified.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    ports:
+      http:
+        port: 80
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    ingressClassName: "nginx"
+    enabled: true
+    hosts:
+      - host: vault.nfl-nzr.com
+        paths:
+          - path: /
+
+persistence:
+  # -- Configure persistence settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  data:
+    enabled: true
+    retain: true
+    storageClass: "longhorn"
+    accessMode: ReadWriteMany
+    size: 1Gi
+
+podSecurityContext:
+  # -- Run as `nobody` user
+  runAsUser: 65534
+  # -- Run as `nobody` group
+  runAsGroup: 65534
+  # -- Volume binds will be granted to `nobody` group
+  fsGroup: 65534
