@@ -16,10 +16,6 @@ env:
   # -- Token for the admin interface, preferably use a long random string.
   #    If not set, the admin panel is disabled.
   #    [[ref]](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page#secure-the-admin_token)
-  - name: ADMIN_TOKEN
-    secretKeyRef:
-      name: vault-secrets 
-      key: adminToken
   - name: SIGNUPS_ALLOWED
     value: true
 service:
