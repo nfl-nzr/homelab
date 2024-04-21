@@ -15,9 +15,7 @@ spec:
         - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: vaultwarden
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
-    syncOptions:
-      - CreateNamespace=true
