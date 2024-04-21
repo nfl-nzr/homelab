@@ -17,10 +17,7 @@ env:
   #    If not set, the admin panel is disabled.
   #    [[ref]](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page#secure-the-admin_token)
   - name: ADMIN_TOKEN
-    valueFrom:
-          secretKeyRef:
-            name: vault-secrets
-            key: adminToken
+    value: $argon2i$v=19$m=16,t=2,p=1$bTd2aDdCZmdQQ1owelJOZw$037QYI94S6LwSRZW0fSGRQ
   - name: SIGNUPS_ALLOWED
     value: true
 service:
