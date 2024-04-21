@@ -18,7 +18,8 @@ env:
   #    [[ref]](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page#secure-the-admin_token)
   - name: ADMIN_TOKEN
     secretKeyRef:
-      name: 
+      name: vault-secrets 
+      key: adminToken
   - name: SIGNUPS_ALLOWED
     value: true
 service:
