@@ -2,9 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: general
-  namespace: arg
-  finalizers:
-  - resources-finalizer.argocd.argoproj.ioocd
+  namespace: argocd
 spec:
   generators:
   - git:
