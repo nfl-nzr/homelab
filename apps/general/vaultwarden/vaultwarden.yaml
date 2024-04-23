@@ -8,16 +8,15 @@ metadata:
 spec:
   project: default
   sources:
-  # - repoURL: https://github.com/nfl-nzr/homelab
-  #   targetRevision: HEAD
-  #   path: apps/general/vaultwarden/pre-reqs
-  - chart: vaultwarden
-    repoURL: https://charts.gabe565.com
-    targetRevision: 0.12.1
-    helm:
-      releaseName: vaultwarden
-      valueFiles:
-      - values.yaml
+  - repoURL: https://github.com/nfl-nzr/homelab
+    path: apps/general/vaultwarden/pre-reqs
+  # - chart: vaultwarden
+  #   repoURL: https://charts.gabe565.com
+  #   targetRevision: 0.12.1
+  #   helm:
+  #     releaseName: vaultwarden
+  #     valueFiles:
+  #     - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: vaultwarden
