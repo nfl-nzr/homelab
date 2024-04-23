@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: https://github.com/nfl-nzr/homelab
-    targetRevision: HEAD
-    path: apps/general/vaultwarden/pre-reqs
+  # - repoURL: https://github.com/nfl-nzr/homelab
+  #   targetRevision: HEAD
+  #   path: apps/general/vaultwarden/pre-reqs
   - chart: vaultwarden
     repoURL: https://charts.gabe565.com
     targetRevision: 0.12.1
