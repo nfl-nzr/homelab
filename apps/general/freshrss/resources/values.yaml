@@ -32,7 +32,3 @@ persistence:
     globalMounts:
     - path: /config
       readOnly: false
-podSecurityContext:
-  runAsUser: 65534
-  runAsGroup: 65534
-  fsGroup: 65534
