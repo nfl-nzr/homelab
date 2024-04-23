@@ -10,6 +10,7 @@ spec:
     path: apps/general/freshrss/resources
   destination:
     server: "https://kubernetes.default.svc"
+    namespace: freshrss
   syncPolicy:
     automated:
       prune: true
