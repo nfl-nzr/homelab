@@ -16,7 +16,7 @@ spec:
     helm:
       releaseName: vaultwarden
       valueFiles:
-      - values.yaml
+      - apps/general/vaultwarden/values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: vaultwarden
