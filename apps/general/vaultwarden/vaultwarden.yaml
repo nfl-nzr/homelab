@@ -7,49 +7,7 @@ spec:
   project: default
   sources:
   - repoURL: https://github.com/nfl-nzr/homelab
-    path: apps/general/vaultwarden/pre-reqs
-  - chart: vaultwarden
-    repoURL: https://charts.gabe565.com
-    targetRevision: 0.12.1
-    helm:
-      valuesObject:
-        #        image:
-        #          repository: ghcr.io/dani-garcia/vaultwarden
-        #          pullPolicy: IfNotPresent
-        #          tag: 1.30.5-alpine
-        #        controller:
-        #          strategy: RollingUpdate
-        #        env:
-        #        - name: DISABLE_ADMIN_TOKEN
-        #          value: true
-        #        - name: SIGNUPS_ALLOWED
-        #          value: true
-        #        service:
-        #          main:
-        #            ports:
-        #              http:
-        #                port: 80
-        #        ingress:
-        #          main:
-        #            ingressClassName: "nginx"
-        #            enabled: true
-        #            hosts:
-        #            - host: vault.nfl-nzr.com
-        #              paths:
-        #              - path: /
-        #        persistence:
-        #          data:
-        #            enabled: true
-        #            retain: true
-        #            storageClass: "longhorn"
-        #            accessMode: ReadWriteMany
-        #            size: 1Gi
-        #        podSecurityContext:
-        #          runAsUser: 65534
-        #          runAsGroup: 65534
-        #          fsGroup: 65534
-      valueFiles:
-      - values.yaml
+    path: apps/general/vaultwarden/resources
   destination:
     server: "https://kubernetes.default.svc"
     namespace: vaultwarden
