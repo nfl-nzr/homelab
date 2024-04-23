@@ -7,7 +7,7 @@ resources:
 helmCharts:
 - name: app-template
   repo: https://bjw-s.github.io/helm-charts/
-  releaseName: test-release
+  releaseName: freshrss
   namespace: freshrss
   version: 0.1.0
   valuesFile: values.yaml
