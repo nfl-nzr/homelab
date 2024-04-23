@@ -29,6 +29,9 @@ persistence:
     storageClass: "longhorn"
     accessMode: ReadWriteMany
     size: 1Gi
+    globalMounts:
+    - path: /config
+      readOnly: false
 podSecurityContext:
   runAsUser: 65534
   runAsGroup: 65534
