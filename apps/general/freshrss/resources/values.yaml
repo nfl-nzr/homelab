@@ -1,0 +1,35 @@
+image:
+  repository: linuxserver/freshrss
+  pullPolicy: IfNotPresent
+  tag: 1.23.1
+controller:
+  strategy: RollingUpdate
+env:
+- name: PUID
+  value: "1000"
+- name: PGID
+  value: "1000"
+service:
+  main:
+    ports:
+      http:
+        port: 80
+ingress:
+  main:
+    ingressClassName: "nginx"
+    enabled: true
+    hosts:
+    - host: rss.nfl-nzr.com
+      paths:
+      - path: /
+persistence:
+  config:
+    enabled: true
+    retain: false
+    storageClass: "longhorn"
+    accessMode: ReadWriteMany
+    size: 1Gi
+podSecurityContext:
+  runAsUser: 65534
+  runAsGroup: 65534
+  fsGroup: 65534

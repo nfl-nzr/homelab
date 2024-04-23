@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: freshrss-application
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://github.com/nfl-nzr/homelab
+    path: apps/general/freshrss/resources
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: freshrss
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
