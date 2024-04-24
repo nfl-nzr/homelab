@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: general
+  name: media
   namespace: argocd
   finalizers:
   - "resources-finalizer.argocd.argoproj.io"
@@ -11,10 +11,12 @@ spec:
       repoURL: https://github.com/nfl-nzr/homelab
       revision: master
       directories:
-      - path: apps/general/*
+      - path: apps/media
   template:
     metadata:
       name: '{{path.basename}}'
+      finalizers:
+      - "resources-finalizer.argocd.argoproj.io"
     spec:
       project: default
       syncPolicy:
