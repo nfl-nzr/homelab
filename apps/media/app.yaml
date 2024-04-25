@@ -5,12 +5,11 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
   destination:
     server: https://kubernetes.default.svc
     namespace: media
   sources:
+  - repoURL: https://github.com/nfl-nzr/homelab.git
+    path: apps/media/common
   - repoURL: https://github.com/nfl-nzr/homelab.git
     path: apps/media/transmission

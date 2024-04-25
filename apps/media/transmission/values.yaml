@@ -4,6 +4,12 @@ image:
   tag: latest
 controller:
   strategy: RollingUpdate
+env:
+  - name: PUID
+    value: 1000
+  - name: PGID
+    value: 1000
+  - TZ
 service:
   main:
     ports:
