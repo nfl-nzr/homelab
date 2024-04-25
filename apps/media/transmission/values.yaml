@@ -30,6 +30,14 @@ service:
         port: 6500
 
 persistence:
+  test:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd
+    globalMounts:
+    - path: /data/test
+      readOnly: false
   data:
     enabled: true
     type: nfs
