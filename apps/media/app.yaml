@@ -13,5 +13,5 @@ spec:
   sources:
   - repoURL: https://github.com/nfl-nzr/homelab.git
     path: apps/media/common
-  # - repoURL: https://github.com/nfl-nzr/homelab.git
-  #   path: apps/media/transmission
+  - repoURL: https://github.com/nfl-nzr/homelab.git
+    path: apps/media/transmission
