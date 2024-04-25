@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: media
   namespace: argocd
+  finalizers:
+  - "resources-finalizer.argocd.argoproj.io"
 spec:
   project: default
   destination:
@@ -11,5 +13,5 @@ spec:
   sources:
   - repoURL: https://github.com/nfl-nzr/homelab.git
     path: apps/media/common
-  - repoURL: https://github.com/nfl-nzr/homelab.git
-    path: apps/media/transmission
+  # - repoURL: https://github.com/nfl-nzr/homelab.git
+  #   path: apps/media/transmission
