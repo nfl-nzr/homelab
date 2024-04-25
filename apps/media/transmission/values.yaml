@@ -10,14 +10,17 @@ env:
 - name: PUID
   valueFrom:
     configMapKeyRef:
+      name: common-conf
       key: PUID
 - name: PGID
   valueFrom:
     configMapKeyRef:
+      name: common-conf
       key: PGID
 - name: TZ
   valueFrom:
     configMapKeyRef:
+      name: common-conf
       key: TZ
 
 service:
