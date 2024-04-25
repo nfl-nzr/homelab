@@ -34,15 +34,15 @@ persistence:
     enabled: true
     type: nfs
     server: 192.168.1.115
-    path: /mnt/hdd
+    path: /mnt/hdd/
     globalMounts:
-      - path: /data/test
+      - path: /data/test/
         readOnly: false
   data:
     enabled: true
     type: nfs
     server: 192.168.1.115
-    path: /mnt/hdd/config/transmission
+    path: /mnt/hdd/config/transmission/
     globalMounts:
       - path: /data/db
         readOnly: false
@@ -50,7 +50,7 @@ persistence:
     enabled: true
     type: nfs
     server: 192.168.1.115
-    path: /mnt/hdd/media/downloads
+    path: /mnt/hdd/media/downloads/
     globalMounts:
-      - path: /data/downloads
+      - path: /data/downloads/
         readOnly: false
