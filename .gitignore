@@ -1,2 +1,3 @@
 *.crt
 .vscode
+secret.yaml
