@@ -30,21 +30,21 @@ service:
         port: 6500
 
 persistence:
-  conf:
-    enabled: true
-    type: persistentVolumeClaim
-    storageClass: longhorn
-    size: 1Gi
-    retain: false
-    accessMode: ReadWriteMany
-    globalMounts:
-      - path: /data/db
-        readOnly: false
-  # nfs-media:
+  # conf:
   #   enabled: true
-  #   type: nfs
-  #   server: 192.168.1.115
-  #   path: /mnt/hdd/media/downloads
+  #   type: persistentVolumeClaim
+  #   storageClass: longhorn
+  #   size: 1Gi
+  #   retain: false
+  #   accessMode: ReadWriteMany
   #   globalMounts:
-  #   - path: /nfs-media/downloads
+  #   - path: /data/db
   #     readOnly: false
+  nfs-media:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/media/downloads
+    globalMounts:
+    - path: /nfs-media/downloads
+      readOnly: false
