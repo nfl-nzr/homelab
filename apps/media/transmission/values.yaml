@@ -30,16 +30,12 @@ service:
         port: 6500
 
 persistence:
-  db:
+  config:
     enabled: true
-    type: persistentVolumeClaim
     storageClass: longhorn
     size: 1Gi
-    retain: false
-    accessMode: ReadWriteMany
-    globalMounts:
-    - path: /data/db
-      readOnly: false
+    retain: true
+    accessMode: ReadWriteOnce
   nfs-media:
     enabled: true
     type: nfs
