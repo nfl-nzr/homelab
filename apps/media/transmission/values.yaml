@@ -40,11 +40,11 @@ persistence:
     globalMounts:
     - path: /data/db
       readOnly: false
-  nfs-media:
-    enabled: true
-    type: nfs
-    server: 192.168.1.115
-    path: /mnt/hdd/media/downloads
-    globalMounts:
-    - path: /nfs-media/downloads
-      readOnly: false
+  # nfs-media:
+  #   enabled: true
+  #   type: nfs
+  #   server: 192.168.1.115
+  #   path: /mnt/hdd/media/downloads
+  #   globalMounts:
+  #   - path: /nfs-media/downloads
+  #     readOnly: false
