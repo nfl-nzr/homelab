@@ -32,7 +32,6 @@ service:
 persistence:
   conf:
     enabled: true
-    retain: false
     type: persistentVolumeClaim
     storageClass: longhorn
     size: 1Gi
