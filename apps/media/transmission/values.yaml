@@ -8,9 +8,15 @@ controller:
 
 env:
 - name: PUID
-  value: 1000
+  valueFrom:
+    configMapKeyRef:
+      name: common-conf
+      key: NFS_PUID
 - name: PGID
-  value: 1000
+  valueFrom:
+    configMapKeyRef:
+      name: common-conf
+      key: NFS_PGID
 - name: TZ
   valueFrom:
     configMapKeyRef:

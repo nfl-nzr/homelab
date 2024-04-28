@@ -5,4 +5,6 @@ metadata:
 data:
   PUID: "1000"
   PGID: "1000"
+  NFS_PUID: "65534"
+  NFS_PGID: "65534"
   TZ: "Asia/Kolkata"
