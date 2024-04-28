@@ -39,11 +39,19 @@ persistence:
     globalMounts:
     - path: /data/db
       readOnly: false
-  nfs-media:
+  nfs-media-incomplete:
     enabled: true
     type: nfs
     server: 192.168.1.115
-    path: /mnt/hdd/media/downloads
+    path: /mnt/hdd/media/downloads/incomplete
     globalMounts:
-    - path: /nfs-media/downloads
+    - path: /nfs-media/downloads/incomplete
+      readOnly: false
+  nfs-media-complete:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/media/downloads/complete
+    globalMounts:
+    - path: /nfs-media/downloads/complete
       readOnly: false
