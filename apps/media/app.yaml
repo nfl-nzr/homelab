@@ -4,7 +4,7 @@ metadata:
   name: media
   namespace: argocd
   finalizers:
-  - "resources-finalizer.nfl.media"
+  - "resources-finalizer.argocd.argoproj.io"
 spec:
   project: default
   destination:
@@ -12,6 +12,8 @@ spec:
     namespace: media
   sources:
   - repoURL: https://github.com/nfl-nzr/homelab.git
-    path: apps/media/common
+    path: apps/media/prowlarr
   - repoURL: https://github.com/nfl-nzr/homelab.git
-    path: apps/media/transmission
+    path: apps/media/common
+      #- repoURL: https://github.com/nfl-nzr/homelab.git
+      #path: apps/media/rd-downloader

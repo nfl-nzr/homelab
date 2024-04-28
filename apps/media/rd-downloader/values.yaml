@@ -1,7 +1,7 @@
 image:
   repository: rogerfar/rdtclient
   pullPolicy: IfNotPresent
-  tag: latest
+  tag: sha-d5aaad8
 
 controller:
   strategy: RollingUpdate
@@ -44,14 +44,8 @@ persistence:
     type: nfs
     server: 192.168.1.115
     path: /mnt/hdd/media/downloads/incomplete
-    globalMounts:
-    - path: /nfs-media/downloads/incomplete
-      readOnly: false
   nfs-media-complete:
     enabled: true
     type: nfs
     server: 192.168.1.115
     path: /mnt/hdd/media/downloads/complete
-    globalMounts:
-    - path: /nfs-media/downloads/complete
-      readOnly: false
