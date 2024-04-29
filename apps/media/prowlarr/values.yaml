@@ -1,0 +1,38 @@
+image:
+  repository: linuxserver/prowlarr
+  pullPolicy: IfNotPresent
+  tag: latest
+
+controller:
+  strategy: RollingUpdate
+
+env:
+- name: PUID
+  valueFrom:
+    configMapKeyRef:
+      name: common-conf
+      key: NFS_PUID
+- name: PGID
+  valueFrom:
+    configMapKeyRef:
+      name: common-conf
+      key: NFS_PGID
+- name: TZ
+  valueFrom:
+    configMapKeyRef:
+      name: common-conf
+      key: TZ
+
+service:
+  main:
+    ports:
+      http:
+        port: 9696
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    size: 1Gi
+    retain: true
+    accessMode: ReadWriteOnce
