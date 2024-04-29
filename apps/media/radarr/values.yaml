@@ -1,5 +1,5 @@
 image:
-  repository: linuxserver/prowlarr
+  repository: linuxserver/radarr
   pullPolicy: IfNotPresent
   tag: latest
 
@@ -11,7 +11,7 @@ env:
   valueFrom:
     configMapKeyRef:
       name: common-conf
-      key: PUID
+      key: NFS_PUID
 - name: PGID
   valueFrom:
     configMapKeyRef:
@@ -27,7 +27,7 @@ service:
   main:
     ports:
       http:
-        port: 9696
+        port: 7878
 
 persistence:
   config:
@@ -35,4 +35,4 @@ persistence:
     storageClass: longhorn
     size: 1Gi
     retain: true
-    accessMode: ReadWriteMany
+    accessMode: ReadWriteOnce

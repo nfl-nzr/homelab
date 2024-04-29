@@ -35,7 +35,7 @@ persistence:
     storageClass: longhorn
     size: 1Gi
     retain: true
-    accessMode: ReadWriteMany
+    accessMode: ReadWriteOnce
     globalMounts:
     - path: /data/db
       readOnly: false

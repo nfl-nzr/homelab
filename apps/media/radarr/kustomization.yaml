@@ -5,6 +5,6 @@ namespace: media
 helmCharts:
 - name: app-template
   repo: https://bjw-s.github.io/helm-charts/
-  releaseName: prowlarr
+  releaseName: radarr
   version: 0.1.0
   valuesFile: values.yaml
