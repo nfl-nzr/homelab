@@ -53,7 +53,7 @@ controllers:
     initContainers:
       copier:
         image: alpine
-        command: ['sh', '-c', "echo 'test' > /config/wg0.conf"]
+        command: ['sh', '-c', "echo 'test' > /config/wg_confs/wg0.conf"]
 
 service:
   main:
