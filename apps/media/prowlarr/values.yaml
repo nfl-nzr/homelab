@@ -9,3 +9,8 @@ controllers:
         image:
           repository: linuxserver/prowlarr
           pullPolicy: IfNotPresent
+service:
+  main:
+    ports:
+      http:
+        port: 9696
