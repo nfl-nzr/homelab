@@ -41,7 +41,7 @@ service:
         port: 9696
 
 persistence:
-  vpnProfile:
+  vpn-profile:
     enabled: true
     type: secret
     name: wg-conf
@@ -50,7 +50,7 @@ persistence:
         vpn:
         - path: /config/wg_confs/wg1.conf
           readOnly: false
-  vpnConfig:
+  vpn-config:
     enabled: true
     type: persistentVolumeClaim
     storageClass: longhorn
@@ -62,7 +62,7 @@ persistence:
         vpn:
         - path: /config
           readOnly: false
-  prowlarrConfig:
+  prowlarr-config:
     enabled: true
     type: persistentVolumeClaim
     storageClass: longhorn
