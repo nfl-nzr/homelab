@@ -52,7 +52,9 @@ controllers:
               key: TZ
     initContainers:
       copier:
-        image: alpine
+        image:
+          repository: alpine
+          tag: latest
         command: ['sh', '-c', "echo 'test' > /config/wg_confs/wg0.conf"]
 
 service:
