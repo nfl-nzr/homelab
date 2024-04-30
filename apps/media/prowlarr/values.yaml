@@ -75,7 +75,7 @@ persistence:
         - path: /custom
           readOnly: false
       copier:
-      - path: /custom
+        path: /custom
         readOnly: false
   vpn-config:
     enabled: true
