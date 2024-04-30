@@ -1,13 +1,12 @@
-nameOverride: prowlarr-vpn
 controllers:
   main:
+    type: deployment
+    strategy: Recreate
     enabled: true
-    strategy: RollingUpdate
     containers:
       main:
         nameOverride: prowlarr
-        dependsOn:
-          - vpn
+        dependsOn: vpn
         image:
           repository: linuxserver/prowlarr
           pullPolicy: IfNotPresent
@@ -22,8 +21,6 @@ controllers:
         securityContext:
           capabilities:
             add: ["NET_ADMIN", "SYS_MODULE"]
-  
-
 env:
 - name: PUID
   valueFrom:
