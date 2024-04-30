@@ -67,16 +67,15 @@ service:
 persistence:
   vpn-profile:
     enabled: true
-    type: secret
+    type: persistentVolumeClaim
     name: wg-conf
-    advancedMounts:
-      main:
-        vpn:
-        - path: /custom
-          readOnly: false
-      copier:
-        path: /custom
-        readOnly: false
+    storageClass: longhorn
+    size: 1Gi
+    retain: true
+    accessMode: ReadWriteMany
+    globalMounts:
+    - path: /custom
+      readOnly: false
   vpn-config:
     enabled: true
     type: persistentVolumeClaim
