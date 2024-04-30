@@ -4,11 +4,11 @@ controllers:
     strategy: Recreate
     enabled: true
     containers:
-      main:
+      frigate:
         # dependsOn: vpn
         nameOverride: prowlarr
         image:
-          repository: linuxserver/prowlarr
+          repository: ghcr.io/blakeblackshear/frigate
           tag: latest
           # vpn:
           #   nameOverride: vpn
