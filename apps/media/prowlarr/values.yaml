@@ -55,7 +55,7 @@ controllers:
         image:
           repository: alpine
           tag: latest
-        command: ['sh', '-c', "echo 'test' > /config/wg_confs/wg0.conf"]
+        command: ['sh', '-c', "echo 'test' > /custom/wg0.conf"]
 
 service:
   main:
