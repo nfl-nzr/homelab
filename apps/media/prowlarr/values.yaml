@@ -64,7 +64,6 @@ persistence:
     enabled: true
     type: secret
     name: wg-conf
-    readOnly: false
     advancedMounts:
       main:
         vpn:
