@@ -52,9 +52,6 @@ controllers:
               name: common-conf
               key: TZ
 
-env:
-- name: Test
-  value: Test1
 service:
   main:
     controller: main
@@ -67,6 +64,7 @@ persistence:
     enabled: true
     type: secret
     name: wg-conf
+    readOnly: false
     advancedMounts:
       main:
         vpn:
