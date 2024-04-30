@@ -1,32 +1,11 @@
 controllers:
   main:
+    type: deployment
+    strategy: Recreate
+    enabled: true
     containers:
       main:
+        dependsOn: vpn
         image:
           repository: linuxserver/prowlarr
           pullPolicy: IfNotPresent
-          tag: latest
-
-service:
-  main:
-    ports:
-      http:
-        port: 80
-ingress:
-  main:
-    ingressClassName: "nginx"
-    enabled: true
-    hosts:
-    - host: rss.nfl-nzr.com
-      paths:
-      - path: /
-persistence:
-  config:
-    enabled: true
-    retain: false
-    storageClass: "longhorn"
-    accessMode: ReadWriteMany
-    size: 1Gi
-    globalMounts:
-    - path: /config
-      readOnly: false
