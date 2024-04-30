@@ -61,7 +61,7 @@ controllers:
             secretKeyRef:
               name: wg-conf
               key: wg0.conf
-        command: ['sh', '-c', "echo $WG_CONF > /custom/wg0.conf"]
+        command: ['sh', '-c', "mkdir /config/wg_confs/ && echo $WG_CONF > /config/wg_confs/wg0.conf"]
 
 service:
   main:
@@ -79,20 +79,8 @@ persistence:
     retain: true
     accessMode: ReadWriteMany
     globalMounts:
-    - path: /custom
+    - path: /config
       readOnly: false
-  vpn-config:
-    enabled: true
-    type: persistentVolumeClaim
-    storageClass: longhorn
-    size: 1Gi
-    retain: true
-    accessMode: ReadWriteOnce
-    advancedMounts:
-      main:
-        vpn:
-        - path: /config
-          readOnly: false
   prowlarr-config:
     enabled: true
     type: persistentVolumeClaim
