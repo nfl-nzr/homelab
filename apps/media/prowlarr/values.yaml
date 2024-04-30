@@ -5,7 +5,6 @@ controllers:
     enabled: true
     containers:
       main:
-        nameOverride: prowlarr
         dependsOn: vpn
         image:
           repository: linuxserver/prowlarr
