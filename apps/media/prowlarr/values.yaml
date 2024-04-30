@@ -48,7 +48,7 @@ persistence:
     advancedMounts:
       main:
         vpn:
-        - path: /config/wg_confs/wg1.conf
+        - path: /config/wg_confs
           readOnly: false
   vpn-config:
     enabled: true
