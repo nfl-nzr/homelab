@@ -32,7 +32,29 @@ controllers:
           repository: linuxserver/wireguard
           pullPolicy: IfNotPresent
           tag: latest
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "SYS_MODULE"]
+        env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PUID
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PGID
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: TZ
 
+env:
+- name: Test
+  value: Test1
 service:
   main:
     controller: main
