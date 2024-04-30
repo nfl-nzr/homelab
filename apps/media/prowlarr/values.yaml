@@ -26,7 +26,6 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
-
       vpn:
         image:
           repository: linuxserver/wireguard
@@ -51,6 +50,10 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
+    initContainers:
+      copier:
+        image: busybox
+        command: ['']
 
 service:
   main:
@@ -64,10 +67,11 @@ persistence:
     enabled: true
     type: secret
     name: wg-conf
+    accessMode: ReadWriteOnce
     advancedMounts:
       main:
         vpn:
-        - path: /config/wg_confs
+        - path: /custom
           readOnly: false
   vpn-config:
     enabled: true
