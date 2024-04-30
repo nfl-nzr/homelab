@@ -6,6 +6,7 @@ controllers:
     containers:
       main:
         # dependsOn: vpn
+        nameOverride: prowlarr
         image:
           repository: linuxserver/prowlarr
           tag: latest
