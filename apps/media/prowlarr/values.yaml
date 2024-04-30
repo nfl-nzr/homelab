@@ -18,9 +18,9 @@ controllers:
             pullPolicy: IfNotPresent
             tag: latest
 
-        securityContext:
-          capabilities:
-            add: ["NET_ADMIN", "SYS_MODULE"]
+        # securityContext:
+        #   capabilities:
+        #     add: ["NET_ADMIN", "SYS_MODULE"]
 env:
 - name: PUID
   valueFrom:
