@@ -1,51 +1,34 @@
-controllers:
-  main:
-    type: deployment
-    strategy: Recreate
-    enabled: true
-    containers:
-      frigate:
-        # dependsOn: vpn
-        nameOverride: prowlarr
-        image:
-          repository: ghcr.io/blakeblackshear/frigate
-          tag: latest
-          # vpn:
-          #   nameOverride: vpn
-          #   image:
-          #     repository: linuxserver/wireguard
-          #     pullPolicy: IfNotPresent
-
-          # securityContext:
-          #   capabilities:
-          #     add: ["NET_ADMIN", "SYS_MODULE"]
+image:
+  repository: linuxserver/prowlarr
+  pullPolicy: IfNotPresent
+  tag: latest
+controller:
+  strategy: RollingUpdate
 env:
 - name: PUID
-  valueFrom:
-    configMapKeyRef:
-      name: common-conf
-      key: NFS_PUID
+  value: "1000"
 - name: PGID
-  valueFrom:
-    configMapKeyRef:
-      name: common-conf
-      key: NFS_PGID
-- name: TZ
-  valueFrom:
-    configMapKeyRef:
-      name: common-conf
-      key: TZ
-
+  value: "1000"
 service:
   main:
     ports:
       http:
-        port: 9696
-
+        port: 80
+ingress:
+  main:
+    ingressClassName: "nginx"
+    enabled: true
+    hosts:
+    - host: rss.nfl-nzr.com
+      paths:
+      - path: /
 persistence:
   config:
     enabled: true
-    storageClass: longhorn
+    retain: false
+    storageClass: "longhorn"
+    accessMode: ReadWriteMany
     size: 1Gi
-    retain: true
-    accessMode: ReadWriteOnce
+    globalMounts:
+    - path: /config
+      readOnly: false
