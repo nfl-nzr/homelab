@@ -1,14 +1,12 @@
-image:
-  repository: linuxserver/prowlarr
-  pullPolicy: IfNotPresent
-  tag: latest
-controller:
-  strategy: RollingUpdate
-env:
-- name: PUID
-  value: "1000"
-- name: PGID
-  value: "1000"
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          repository: linuxserver/prowlarr
+          pullPolicy: IfNotPresent
+          tag: latest
+
 service:
   main:
     ports:
