@@ -9,13 +9,11 @@ controllers:
         image:
           repository: linuxserver/prowlarr
           pullPolicy: IfNotPresent
-          tag: latest
       vpn:
         nameOverride: vpn
         image:
           repository: linuxserver/wireguard
           pullPolicy: IfNotPresent
-          tag: latest
 
         # securityContext:
         #   capabilities:
