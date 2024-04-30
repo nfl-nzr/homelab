@@ -74,10 +74,9 @@ persistence:
         vpn:
         - path: /custom
           readOnly: false
-
-    copier:
-    - path: /custom
-      readOnly: false
+      copier:
+      - path: /custom
+        readOnly: false
   vpn-config:
     enabled: true
     type: persistentVolumeClaim
