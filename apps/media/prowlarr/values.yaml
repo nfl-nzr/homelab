@@ -10,6 +10,23 @@ controllers:
           repository: linuxserver/prowlarr
           pullPolicy: IfNotPresent
           tag: latest
+        env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PUID
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PGID
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: TZ
+
       vpn:
         image:
           repository: linuxserver/wireguard
@@ -22,3 +39,38 @@ service:
     ports:
       http:
         port: 9696
+
+persistence:
+  vpnProfile:
+    enabled: true
+    type: secret
+    accessMode: ReadWriteOnce
+    advancedMounts:
+      main:
+        vpn:
+        - path: /config/wg_confs/wg1.conf
+          readOnly: false
+  vpnConfig:
+    enabled: true
+    type: persistentVolumeClaim
+    storageClass: longhorn
+    size: 1Gi
+    retain: true
+    accessMode: ReadWriteOnce
+    advancedMounts:
+      main:
+        vpn:
+        - path: /config
+          readOnly: false
+  prowlarrConfig:
+    enabled: true
+    type: persistentVolumeClaim
+    storageClass: longhorn
+    size: 1Gi
+    retain: true
+    accessMode: ReadWriteOnce
+    advancedMounts:
+      main:
+        main:
+        - path: /config
+          readOnly: false
