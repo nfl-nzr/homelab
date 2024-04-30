@@ -12,9 +12,9 @@ controllers:
           tag: latest
 service:
   main:
+    controller:
+      name: main
+      port: 9696
     ports:
       http:
         port: 9696
-        controller:
-          name: main
-          port: 9696
