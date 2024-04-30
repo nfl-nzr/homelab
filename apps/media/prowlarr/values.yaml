@@ -44,7 +44,6 @@ persistence:
   vpnProfile:
     enabled: true
     type: secret
-    accessMode: ReadWriteOnce
     advancedMounts:
       main:
         vpn:
