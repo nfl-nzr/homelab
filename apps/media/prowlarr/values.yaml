@@ -55,7 +55,13 @@ controllers:
         image:
           repository: alpine
           tag: latest
-        command: ['sh', '-c', "echo 'test' > /custom/wg0.conf"]
+        env:
+        - name: WG_CONF
+          valueFrom:
+            secretKeyRef:
+              name: wg-conf
+              key: wg0.conf
+        command: ['sh', '-c', "echo $WG_CONF > /custom/wg0.conf"]
 
 service:
   main:
