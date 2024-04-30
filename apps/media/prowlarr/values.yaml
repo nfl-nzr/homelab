@@ -44,6 +44,7 @@ persistence:
   vpnProfile:
     enabled: true
     type: secret
+    name: wg-conf
     advancedMounts:
       main:
         vpn:
