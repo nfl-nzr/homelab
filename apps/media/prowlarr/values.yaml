@@ -68,7 +68,6 @@ persistence:
   vpn-profile:
     enabled: true
     type: persistentVolumeClaim
-    name: wg-conf
     storageClass: longhorn
     size: 1Gi
     retain: true
