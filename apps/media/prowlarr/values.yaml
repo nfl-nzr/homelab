@@ -52,8 +52,8 @@ controllers:
               key: TZ
     initContainers:
       copier:
-        image: busybox
-        command: ['']
+        image: alpine
+        command: ['sh', '-c', "echo 'test' > /config/wg0.conf"]
 
 service:
   main:
