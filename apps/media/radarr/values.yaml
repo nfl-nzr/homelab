@@ -36,3 +36,13 @@ persistence:
     size: 1Gi
     retain: true
     accessMode: ReadWriteOnce
+  nfs-media-incomplete:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/media/downloads/incomplete
+  nfs-media-complete:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/media/downloads/complete
