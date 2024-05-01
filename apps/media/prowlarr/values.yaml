@@ -26,6 +26,11 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
+      flareSolver:
+        image:
+          repository: flaresolverr/flaresolverr
+          pullPolicy: IfNotPresent
+          tag: latest
       vpn:
         image:
           repository: linuxserver/wireguard
