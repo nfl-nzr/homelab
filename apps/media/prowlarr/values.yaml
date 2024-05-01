@@ -84,7 +84,8 @@ service:
     ports:
       http:
         port: 9696
-  secondary:
+  flare-solverr:
+    nameOverride: "solver"
     controller: main
     ports:
       http:
