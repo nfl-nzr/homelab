@@ -39,7 +39,6 @@ persistence:
     enabled: true
     type: persistentVolumeClaim
     existingClaim: radarr-pvc
-    size: 500Mi
     advancedMounts:
       main:
         main:
