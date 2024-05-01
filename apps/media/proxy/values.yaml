@@ -8,7 +8,7 @@ controllers:
         image:
           repository: qmcgaw/gluetun
           pullPolicy: IfNotPresent
-          tag: latest
+          tag: v3.38.0
         securityContext:
           sysctls:
           - name: net.ipv4.conf.all.src_valid_mark
