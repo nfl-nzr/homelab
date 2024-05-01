@@ -54,6 +54,18 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
+        - name: WG_CONF
+          valueFrom:
+            secretKeyRef:
+              name: wg-conf
+              key: wg0.conf
+    initContainers:
+      copier:
+        image:
+          repository: alpine
+          tag: latest
+        env:
+        command: ['sh', '-c', "mkdir /config/wg_confs/ && echo $WG_CONF > /config/wg_confs/wg0.conf"]
 
 service:
   main:
