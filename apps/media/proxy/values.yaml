@@ -17,6 +17,8 @@ controllers:
           capabilities:
             add: ["NET_ADMIN"]
         env:
+        - name: HTTPPROXY
+          value: on
         - name: VPN_TYPE
           value: wireguard
         - name: VPN_SERVICE_PROVIDER
