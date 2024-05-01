@@ -70,7 +70,7 @@ controllers:
             secretKeyRef:
               name: wg-conf
               key: wg0.conf
-        command: ['sh', '-c', "sleep 60 && mkdir -p /temp-conf/wg_confs && cp /config/wg0.conf /temp-conf/wg_confs/wg0.conf"]
+        command: ['sh', '-c', "mkdir -p /temp-conf/wg_confs && cp /config/wg0.conf /temp-conf/wg_confs/wg0.conf"]
 
 service:
   main:
