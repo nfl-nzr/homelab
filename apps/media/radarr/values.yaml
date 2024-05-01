@@ -38,11 +38,8 @@ persistence:
   radarr-config:
     enabled: true
     type: persistentVolumeClaim
-    storageClass: longhorn
     existingClaim: radarr-pvc
     size: 500Mi
-    retain: true
-    accessMode: ReadWriteOnce
     advancedMounts:
       main:
         main:
