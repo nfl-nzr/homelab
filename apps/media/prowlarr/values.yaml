@@ -37,7 +37,7 @@ controllers:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "echo $WG_CONF> /config/wg_confs/wg0.conf"]
+              command: ["/bin/sh", "-c", "echo $WG_CONF > /config/wg_confs/wg0.conf"]
         env:
         - name: PUID
           valueFrom:
@@ -59,13 +59,6 @@ controllers:
             secretKeyRef:
               name: wg-conf
               key: wg0.conf
-    initContainers:
-      copier:
-        image:
-          repository: alpine
-          tag: latest
-        env:
-        command: ['sh', '-c', "mkdir /config/wg_confs/ && echo $WG_CONF > /config/wg_confs/wg0.conf"]
 
 service:
   main:
