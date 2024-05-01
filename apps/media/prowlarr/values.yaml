@@ -2,7 +2,6 @@ controllers:
   main:
     type: statefulset
     nameOverride: prowlarr-dep
-    strategy: Recreate
     enabled: true
     statefulset:
       volumeClaimTemplates:
