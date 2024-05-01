@@ -59,18 +59,18 @@ controllers:
             secretKeyRef:
               name: wg-conf
               key: wg0.conf
-      initContainers:
-        copier:
-          image:
-            repository: alpine
-            tag: latest
-          env:
-          - name: WG_CONF
-            valueFrom:
-              secretKeyRef:
-                name: wg-conf
-                key: wg0.conf
-          command: ['sh', '-c', "echo $WG_CONF > /custom/wg0.conf"]
+    initContainers:
+      copier:
+        image:
+          repository: alpine
+          tag: latest
+        env:
+        - name: WG_CONF
+          valueFrom:
+            secretKeyRef:
+              name: wg-conf
+              key: wg0.conf
+        command: ['sh', '-c', "echo $WG_CONF > /custom/wg0.conf"]
 
 service:
   main:
