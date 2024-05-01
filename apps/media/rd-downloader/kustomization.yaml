@@ -6,5 +6,5 @@ helmCharts:
 - name: app-template
   repo: https://bjw-s.github.io/helm-charts/
   releaseName: rdtclient
-  version: 0.1.0
+  version: 3.1.0
   valuesFile: values.yaml
