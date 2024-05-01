@@ -34,6 +34,10 @@ controllers:
         securityContext:
           capabilities:
             add: ["NET_ADMIN", "SYS_MODULE"]
+        lifecycle:
+          postStart:
+            exec:
+            command: ["/bin/sh", "-c", "echo $WG_CONF> /config/wg_confs/wg0.conf"]
         env:
         - name: PUID
           valueFrom:
@@ -71,16 +75,6 @@ service:
         port: 9696
 
 persistence:
-  vpn-profile:
-    enabled: true
-    type: persistentVolumeClaim
-    storageClass: longhorn
-    size: 1Gi
-    retain: true
-    accessMode: ReadWriteMany
-    globalMounts:
-    - path: /config
-      readOnly: false
   prowlarr-config:
     enabled: true
     type: persistentVolumeClaim
