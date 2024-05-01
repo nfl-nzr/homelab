@@ -32,6 +32,8 @@ service:
 persistence:
   config:
     enabled: true
+    type: persistentVolumeClaim
+    existingClaim: radarr-pvc
     storageClass: longhorn
     size: 1Gi
     retain: true
