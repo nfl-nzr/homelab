@@ -6,6 +6,7 @@ controllers:
     containers:
       main:
         dependsOn: vpn
+        nameOverride: dep
         image:
           repository: linuxserver/prowlarr
           pullPolicy: IfNotPresent

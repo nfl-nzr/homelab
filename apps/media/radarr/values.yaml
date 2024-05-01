@@ -1,50 +1,64 @@
-image:
-  repository: linuxserver/radarr
-  pullPolicy: IfNotPresent
-  tag: latest
-
-controller:
-  strategy: RollingUpdate
-
-env:
-- name: PUID
-  valueFrom:
-    configMapKeyRef:
-      name: common-conf
-      key: NFS_PUID
-- name: PGID
-  valueFrom:
-    configMapKeyRef:
-      name: common-conf
-      key: NFS_PGID
-- name: TZ
-  valueFrom:
-    configMapKeyRef:
-      name: common-conf
-      key: TZ
-
+controllers:
+  main:
+    type: deployment
+    strategy: Recreate
+    enabled: true
+    containers:
+      main:
+        nameOverride: pod
+        image:
+          repository: linuxserver/radarr
+          pullPolicy: IfNotPresent
+          tag: latest
+        env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PUID
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PGID
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: TZ
 service:
   main:
+    controller: main
+    nameOverride: svc
     ports:
       http:
         port: 7878
 
 persistence:
-  config:
+  radarr-config:
     enabled: true
     type: persistentVolumeClaim
-    existingClaim: radarr-pvc
     storageClass: longhorn
-    size: 1Gi
+    existingClaim: radarr-pvc
+    size: 500Mi
     retain: true
     accessMode: ReadWriteOnce
-  nfs-media-incomplete:
+    advancedMounts:
+      main:
+        main:
+        - path: /config
+          readOnly: false
+  nfs-movies:
     enabled: true
     type: nfs
     server: 192.168.1.115
-    path: /mnt/hdd/media/downloads/incomplete
-  nfs-media-complete:
+    path: /mnt/hdd/media/movies
+    globalMounts:
+    - path: /media/movies
+  nfs-downloads:
     enabled: true
     type: nfs
     server: 192.168.1.115
-    path: /mnt/hdd/media/downloads/complete
+    path: /mnt/hdd/media/downloads
+    globalMounts:
+    - path: /media/downloads
