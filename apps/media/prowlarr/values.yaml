@@ -87,7 +87,7 @@ persistence:
     advancedMounts:
       main:
         copier:
-        - path: /config/wg0.conf
+        - path: /config
           readOnly: false
   vpn-profile:
     enabled: true
