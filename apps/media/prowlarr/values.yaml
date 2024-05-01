@@ -89,7 +89,7 @@ persistence:
     accessMode: ReadWriteOnce
     advancedMounts:
       main:
-        main:
+        vpn:
         - path: /config
           readOnly: false
         initContainers:
