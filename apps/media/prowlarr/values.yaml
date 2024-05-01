@@ -92,7 +92,7 @@ persistence:
         vpn:
         - path: /config
           readOnly: false
-        initContainers:
+        copier:
         - path: /temp-conf
           readOnly: false
 
