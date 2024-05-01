@@ -1,12 +1,11 @@
 controllers:
   main:
     type: deployment
+    nameOverride: prowlarr-dep
     strategy: Recreate
     enabled: true
     containers:
       main:
-        dependsOn: vpn
-        nameOverride: dep
         image:
           repository: linuxserver/prowlarr
           pullPolicy: IfNotPresent
@@ -32,51 +31,6 @@ controllers:
           repository: flaresolverr/flaresolverr
           pullPolicy: IfNotPresent
           tag: latest
-      vpn:
-        image:
-          repository: linuxserver/wireguard
-          pullPolicy: IfNotPresent
-          tag: latest
-        securityContext:
-          sysctls:
-          - name: net.ipv4.conf.all.src_valid_mark
-            value: "1"
-          privileged: true
-          capabilities:
-            add: ["NET_ADMIN", "SYS_MODULE"]
-        env:
-        - name: PUID
-          valueFrom:
-            configMapKeyRef:
-              name: common-conf
-              key: PUID
-        - name: PGID
-          valueFrom:
-            configMapKeyRef:
-              name: common-conf
-              key: PGID
-        - name: TZ
-          valueFrom:
-            configMapKeyRef:
-              name: common-conf
-              key: TZ
-        - name: WG_CONF
-          valueFrom:
-            secretKeyRef:
-              name: wg-conf
-              key: wg0.conf
-    initContainers:
-      copier:
-        image:
-          repository: alpine
-          tag: latest
-        env:
-        - name: WG_CONF
-          valueFrom:
-            secretKeyRef:
-              name: wg-conf
-              key: wg0.conf
-        command: ['sh', '-c', "mkdir -p /temp-conf/wg_confs && cp /config/wg0.conf /temp-conf/wg_confs/wg0.conf"]
 
 service:
   main:
@@ -93,31 +47,6 @@ service:
         port: 8191
 
 persistence:
-  vpn-tmp:
-    enabled: true
-    type: secret
-    name: wg-conf
-    advancedMounts:
-      main:
-        copier:
-        - path: /config
-          readOnly: false
-  vpn-profile:
-    enabled: true
-    type: persistentVolumeClaim
-    storageClass: longhorn
-    size: 100Mi
-    retain: true
-    accessMode: ReadWriteOnce
-    advancedMounts:
-      main:
-        vpn:
-        - path: /config
-          readOnly: false
-        copier:
-        - path: /temp-conf
-          readOnly: false
-
   prowlarr-config:
     enabled: true
     type: persistentVolumeClaim

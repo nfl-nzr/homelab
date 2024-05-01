@@ -1,0 +1,73 @@
+controllers:
+  main:
+    type: deployment
+    strategy: Recreate
+    enabled: true
+    containers:
+      main:
+        image:
+          repository: qmcgaw/gluetun
+          pullPolicy: IfNotPresent
+          tag: latest
+        securityContext:
+          sysctls:
+          - name: net.ipv4.conf.all.src_valid_mark
+            value: "1"
+          privileged: true
+          capabilities:
+            add: ["NET_ADMIN"]
+        env:
+        - name: VPN_TYPE
+          value: wireguard
+        - name: VPN_SERVICE_PROVIDER
+          value: custom
+        - name: WG_CONF
+          valueFrom:
+            secretKeyRef:
+              name: wg-conf
+              key: wg0.conf
+    initContainers:
+      copier:
+        image:
+          repository: alpine
+          tag: latest
+        env:
+        - name: WG_CONF
+          valueFrom:
+            secretKeyRef:
+              name: wg-conf
+              key: wg0.conf
+        command: ['sh', '-c', "mkdir -p /temp-conf/wireguard && cp /config/wg0.conf /temp-conf/wireguard/wg0.conf"]
+
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 8888
+
+persistence:
+  vpn-tmp:
+    enabled: true
+    type: secret
+    name: wg-conf
+    advancedMounts:
+      main:
+        copier:
+        - path: /config
+          readOnly: false
+  vpn-profile:
+    enabled: true
+    type: persistentVolumeClaim
+    storageClass: longhorn
+    size: 100Mi
+    retain: true
+    accessMode: ReadWriteOnce
+    advancedMounts:
+      main:
+        main:
+        - path: /gluetun
+          readOnly: false
+        copier:
+        - path: /temp-conf
+          readOnly: false
