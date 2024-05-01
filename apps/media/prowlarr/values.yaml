@@ -93,7 +93,7 @@ persistence:
         - path: /config
           readOnly: false
         initContainers:
-        - path: /config
+        - path: /temp-conf
           readOnly: false
 
   prowlarr-config:
