@@ -80,9 +80,15 @@ controllers:
 service:
   main:
     controller: main
+    primary: true
     ports:
       http:
         port: 9696
+  secondary:
+    controller: main
+    ports:
+      http:
+        port: 8191
 
 persistence:
   vpn-tmp:
