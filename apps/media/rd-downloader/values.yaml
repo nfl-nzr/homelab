@@ -45,11 +45,13 @@ persistence:
     server: 192.168.1.115
     path: /mnt/hdd/media/movies
     globalMounts:
-    - path: /media/movies
+    - path: /mnt/hdd/media/movies
+      readOnly: false
   nfs-downloads:
     enabled: true
     type: nfs
     server: 192.168.1.115
     path: /mnt/hdd/media/downloads
     globalMounts:
-    - path: /media/downloads
+    - path: /mnt/hdd/media/downloads
+      readOnly: false
