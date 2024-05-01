@@ -1,0 +1,62 @@
+controllers:
+  main:
+    type: deployment
+    strategy: Recreate
+    enabled: true
+    containers:
+      main:
+        nameOverride: pod
+        image:
+          repository: linuxserver/jellyfin
+          pullPolicy: IfNotPresent
+          tag: 10.8.13
+        env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PUID
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PGID
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: TZ
+service:
+  main:
+    controller: main
+    nameOverride: svc
+    ports:
+      http:
+        port: 8096
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    size: 2Gi
+    retain: true
+    accessMode: ReadWriteOnce
+    globalMounts:
+    - path: /config
+      readOnly: false
+  nfs-movies:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/media/movies
+    globalMounts:
+    - path: /mnt/hdd/media/movies
+      readOnly: false
+  nfs-downloads:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/media/downloads
+    globalMounts:
+    - path: /mnt/hdd/media/downloads
+      readOnly: false
