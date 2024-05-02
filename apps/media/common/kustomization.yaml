@@ -5,3 +5,5 @@ resources:
 - namespace.yaml
 - cm.yaml
 - sealed-wg-conf-secret.yaml
+- config-pv.yaml
+- config-pvc.yaml
