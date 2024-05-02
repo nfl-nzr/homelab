@@ -5,7 +5,6 @@ controllers:
     enabled: true
     containers:
       main:
-        nameOverride: pod
         image:
           repository: linuxserver/radarr
           pullPolicy: IfNotPresent

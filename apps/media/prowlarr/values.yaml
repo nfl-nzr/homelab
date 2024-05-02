@@ -43,12 +43,13 @@ controllers:
 service:
   main:
     controller: main
+    nameOverride: svc
     primary: true
     ports:
       http:
         port: 9696
   flare-solverr:
-    nameOverride: "solver"
+    nameOverride: "svc"
     controller: main
     ports:
       http:
