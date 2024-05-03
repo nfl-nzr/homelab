@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/nfl-nzr/homelab
       revision: master
       directories:
-      - path: apps/general/*
+      - path: apps/general/wireguard
   template:
     metadata:
       name: '{{path.basename}}'
