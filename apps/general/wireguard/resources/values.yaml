@@ -1,1 +1,4 @@
-configSecretName: wg-conf
+replicaCount: 1
+autoscaling:
+  enabled: false
+configSecretName: wg-config
