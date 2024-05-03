@@ -1,3 +1,4 @@
 *.crt
 .vscode
-secret.yaml
+wg-conf-secret.yaml
+apps/media/common/wg-conf-secret.yaml
