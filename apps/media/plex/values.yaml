@@ -5,12 +5,13 @@ controllers:
     enabled: true
     containers:
       main:
-        nameOverride: pod
         image:
-          repository: linuxserver/jellyfin
+          repository: linuxserver/plex
           pullPolicy: IfNotPresent
-          tag: 10.8.13
+          tag: 1.40.2
         env:
+        - name: VERSION
+          value: docker
         - name: PUID
           valueFrom:
             configMapKeyRef:
@@ -26,21 +27,12 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
-service:
-  main:
-    controller: main
-    nameOverride: svc
-    ports:
-      http:
-        port: 8096
 
 persistence:
   config:
     enabled: true
-    storageClass: longhorn
-    size: 2Gi
-    retain: true
-    accessMode: ReadWriteOnce
+    type: persistentVolumeClaim
+    existingClaim: plex-pvc
     globalMounts:
     - path: /config
       readOnly: false

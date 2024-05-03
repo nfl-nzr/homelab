@@ -5,6 +5,6 @@ namespace: media
 helmCharts:
 - name: app-template
   repo: https://bjw-s.github.io/helm-charts/
-  releaseName: jellyfin
+  releaseName: plex
   version: 3.1.0
   valuesFile: values.yaml
