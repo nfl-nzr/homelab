@@ -29,6 +29,7 @@ controllers:
               key: TZ
 service:
   main:
+    controller: main
     ports:
       http:
         port: 32400
