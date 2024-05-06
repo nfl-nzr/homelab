@@ -40,6 +40,9 @@ ingress:
     - host: plex.nfl-nzr.com
       paths:
       - path: /
+        service:
+          name: main
+          port: 32400
 
 persistence:
   config:
