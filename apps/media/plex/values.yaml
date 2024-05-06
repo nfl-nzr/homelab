@@ -27,6 +27,19 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
+service:
+  main:
+    ports:
+      http:
+        port: 32400
+
+ingress:
+  main:
+    className: "nginx"
+    hosts:
+    - host: plex.nfl-nzr.com
+      paths:
+      - path: /
 
 persistence:
   config:
