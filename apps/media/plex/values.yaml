@@ -42,7 +42,6 @@ ingress:
       paths:
       - path: /
         service:
-          name: main
           port: 32400
 
 persistence:
