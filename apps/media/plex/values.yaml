@@ -33,6 +33,7 @@ service:
     ports:
       http:
         port: 32400
+        protocol: HTTP
 
 ingress:
   main:
@@ -42,6 +43,7 @@ ingress:
       paths:
       - path: /
         service:
+          name: main
           port: 32400
 
 persistence:
