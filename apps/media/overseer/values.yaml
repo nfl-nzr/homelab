@@ -6,7 +6,7 @@ controllers:
     containers:
       main:
         image:
-          repository: linuxserver/overseer
+          repository: linuxserver/overseerr
           pullPolicy: IfNotPresent
           tag: latest
         env:
