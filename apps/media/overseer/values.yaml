@@ -1,0 +1,45 @@
+controllers:
+  main:
+    type: deployment
+    strategy: Recreate
+    enabled: true
+    containers:
+      main:
+        image:
+          repository: linuxserver/overseer
+          pullPolicy: IfNotPresent
+          tag: latest
+        env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: PUID
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: PGID
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: TZ
+service:
+  main:
+    controller: main
+    nameOverride: svc
+    ports:
+      http:
+        port: 5055
+
+persistence:
+  radarr-config:
+    enabled: true
+    type: persistentVolumeClaim
+    existingClaim: overseer-pvc
+    advancedMounts:
+      main:
+        main:
+        - path: /config
+          readOnly: false
