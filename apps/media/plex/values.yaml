@@ -29,7 +29,6 @@ controllers:
               key: TZ
 service:
   main:
-    controller: main
     ports:
       http:
         port: 32400
@@ -37,13 +36,14 @@ service:
 
 ingress:
   main:
+    enabled: true
     className: "nginx"
     hosts:
     - host: plex.nfl-nzr.com
       paths:
       - path: /
         service:
-          name: main
+          identifier: main
           port: 32400
 
 persistence:
