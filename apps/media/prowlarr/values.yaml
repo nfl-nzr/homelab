@@ -1,17 +1,8 @@
 controllers:
   main:
-    type: statefulset
-    nameOverride: prowlarr-dep
+    type: deployment
+    strategy: Recreate
     enabled: true
-    statefulset:
-      volumeClaimTemplates:
-      - name: config
-        accessMode: "ReadWriteOnce"
-        size: 500Mi
-        storageClass: longhorn
-        globalMounts:
-        - path: /config
-          readOnly: false
     containers:
       main:
         image:
@@ -52,3 +43,11 @@ service:
     ports:
       http:
         port: 8191
+persistence:
+  config:
+    enabled: true
+    type: persistentVolumeClaim
+    existingClaim: prowlarr-pvc
+    globalMounts:
+    - path: /config
+      readOnly: false

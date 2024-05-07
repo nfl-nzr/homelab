@@ -4,14 +4,14 @@ metadata:
   name: general
   namespace: argocd
   finalizers:
-   - "resources-finalizer.argocd.argoproj.io"
+  - "resources-finalizer.argocd.argoproj.io"
 spec:
   generators:
   - git:
       repoURL: https://github.com/nfl-nzr/homelab
       revision: master
       directories:
-      - path: apps/general/wireguard
+      - path: apps/general/*
   template:
     metadata:
       name: '{{path.basename}}'

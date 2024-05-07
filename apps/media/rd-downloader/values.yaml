@@ -36,10 +36,9 @@ service:
 persistence:
   config:
     enabled: true
-    storageClass: longhorn
-    size: 250Mi
-    retain: true
-    accessMode: ReadWriteOnce
+    size: 500Mi
+    type: persistentVolumeClaim
+    existingClaim: dl-pvc
     globalMounts:
     - path: /data/db
       readOnly: false

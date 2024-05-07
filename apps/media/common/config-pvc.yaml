@@ -26,3 +26,17 @@ spec:
     requests:
       storage: 500Mi
   storageClassName: longhorn
+---
+# PROWLARR Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prowlarr-pvc
+  namespace: media
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+  storageClassName: longhorn

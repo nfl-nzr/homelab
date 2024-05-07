@@ -33,7 +33,7 @@ service:
     ports:
       http:
         port: 32400
-        protocol: HTTP
+        protocol: HTTPS
 
 ingress:
   main:
