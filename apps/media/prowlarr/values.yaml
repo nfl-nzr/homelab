@@ -9,6 +9,13 @@ controllers:
           repository: linuxserver/prowlarr
           pullPolicy: IfNotPresent
           tag: latest
+        resources:
+          limits:
+            cpu: 250m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 512Mi
         env:
         - name: PUID
           valueFrom:

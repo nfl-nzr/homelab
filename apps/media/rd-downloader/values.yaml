@@ -9,6 +9,13 @@ controllers:
           repository: rogerfar/rdtclient
           pullPolicy: IfNotPresent
           tag: sha-d5aaad8
+        resources:
+          limits:
+            cpu: 250m
+            memory: 1Gi
+          requests:
+            cpu: 250m
+            memory: 1Gi
         env:
         - name: PUID
           valueFrom:
