@@ -36,7 +36,6 @@ service:
 persistence:
   config:
     enabled: true
-    size: 500Mi
     type: persistentVolumeClaim
     existingClaim: dl-pvc
     globalMounts:

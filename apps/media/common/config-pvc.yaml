@@ -27,6 +27,21 @@ spec:
       storage: 500Mi
   storageClassName: longhorn
 ---
+# DL Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dl-pvc
+  namespace: media
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+  storageClassName: longhorn
+
+---
 # PROWLARR Claim
 apiVersion: v1
 kind: PersistentVolumeClaim
