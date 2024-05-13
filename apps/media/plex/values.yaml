@@ -45,7 +45,7 @@ ingress:
       - path: /
         service:
           identifier: main
-          port: 32400
+          port: http
 
 persistence:
   config:

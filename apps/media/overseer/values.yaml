@@ -50,7 +50,7 @@ ingress:
       - path: /
         service:
           identifier: main
-          port: 5055
+          port: http
 
 persistence:
   overseer-config:
