@@ -40,8 +40,20 @@ service:
       http:
         port: 5055
 
+ingress:
+  main:
+    enabled: true
+    className: "nginx"
+    hosts:
+    - host: overseer.nfl-nzr.com
+      paths:
+      - path: /
+        service:
+          identifier: main
+          port: 5055
+
 persistence:
-  radarr-config:
+  overseer-config:
     enabled: true
     type: persistentVolumeClaim
     existingClaim: overseer-pvc
