@@ -40,18 +40,6 @@ service:
       http:
         port: 5055
 
-ingress:
-  main:
-    enabled: true
-    className: "nginx"
-    hosts:
-    - host: overseer.nfl-nzr.com
-      paths:
-      - path: /
-        service:
-          identifier: main
-          port: http
-
 persistence:
   overseer-config:
     enabled: true
