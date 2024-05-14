@@ -29,8 +29,8 @@ spec:
     path: apps/media/prowlarr
   - repoURL: https://github.com/nfl-nzr/homelab.git
     path: apps/media/proxy
-  - repoURL: https://github.com/nfl-nzr/homelab.git
-    path: apps/media/rd-downloader
+  # - repoURL: https://github.com/nfl-nzr/homelab.git
+  #   path: apps/media/rd-downloader
   - repoURL: https://github.com/nfl-nzr/homelab.git
     path: apps/media/radarr
   - repoURL: https://github.com/nfl-nzr/homelab.git
