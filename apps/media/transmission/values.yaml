@@ -43,6 +43,7 @@ persistence:
   config:
     enabled: true
     type: persistentVolumeClaim
+    size: 512Mi
     retain: false
     accessMode: ReadWriteOnce
   nfs-movies:
