@@ -1,0 +1,63 @@
+controllers:
+  main:
+    type: deployment
+    strategy: Recreate
+    enabled: true
+    containers:
+      main:
+        image:
+          repository: linuxserver/transmission
+          pullPolicy: IfNotPresent
+          tag: 4.0.5
+        resources:
+          limits:
+            cpu: 250m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PUID
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PGID
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: TZ
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 9091
+
+persistence:
+  config:
+    enabled: true
+    type: persistentVolumeClaim
+    retain: false
+    accessMode: ReadWriteOnce
+  nfs-movies:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/media/movies
+    globalMounts:
+    - path: /mnt/hdd/media/movies
+      readOnly: false
+  nfs-downloads:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/media/downloads
+    globalMounts:
+    - path: /mnt/hdd/media/downloads
+      readOnly: false
