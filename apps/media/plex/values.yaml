@@ -59,7 +59,7 @@ persistence:
     enabled: true
     type: nfs
     server: 192.168.1.115
-    path: /mnt/hdd/zurg
+    path: /mnt/hdd/media/zurg
     globalMounts:
     - path: /mnt/hdd/media/zurg
       readOnly: false
