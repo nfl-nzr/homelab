@@ -60,7 +60,7 @@ persistence:
     type: nfs
     server: 192.168.1.115
     path: /mnt/zurg
-    globalMonts:
+    globalMounts:
     - path: /mnt/zurg
       readOnly: false
   nfs-movies:
