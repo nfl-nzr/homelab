@@ -55,6 +55,14 @@ persistence:
     globalMounts:
     - path: /config
       readOnly: false
+  nfs-zurg:
+    enabled: true
+    type: nfs
+    server: 192.168.1.115
+    path: /mnt/hdd/zurg
+    globalMounts:
+    - path: /mnt/hdd/media/zurg
+      readOnly: false
   nfs-movies:
     enabled: true
     type: nfs
