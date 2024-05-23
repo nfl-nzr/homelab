@@ -56,6 +56,8 @@ controllers:
             secretKeyRef:
               name: wg-env
               key: wireguardPrivateKey
+        - name: WIREGUARD_ALLOWED_IPS
+          value: 0.0.0.0/0
         - name: WIREGUARD_ADDRESSES
           valueFrom:
             secretKeyRef:
