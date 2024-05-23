@@ -26,28 +26,41 @@ controllers:
         env:
         - name: HTTPPROXY
           value: on
-        - name: VPN_TYPE
-          value: wireguard
         - name: VPN_SERVICE_PROVIDER
-          value: custom
-        - name: WG_CONF
           valueFrom:
             secretKeyRef:
-              name: wg-conf
-              key: wg0.conf
-    initContainers:
-      copier:
-        image:
-          repository: alpine
-          tag: latest
-        env:
-        - name: WG_CONF
+              name: wg-env
+              key: vpnServiceProvider
+        - name: VPN_TYPE
           valueFrom:
             secretKeyRef:
-              name: wg-conf
-              key: wg0.conf
-        command: ['sh', '-c', "mkdir -p /temp-conf/wireguard && cp /config/wg0.conf /temp-conf/wireguard/wg0.conf"]
-
+              name: wg-env
+              key: vpnType
+        - name: VPN_ENDPOINT_IP
+          valueFrom:
+            secretKeyRef:
+              name: wg-env
+              key: vpnEndpointIp
+        - name: VPN_ENDPOINT_PORT
+          valueFrom:
+            secretKeyRef:
+              name: wg-env
+              key: vpnEndpointPort
+        - name: WIREGUARD_PUBLIC_KEY
+          valueFrom:
+            secretKeyRef:
+              name: wg-env
+              key: wireguardPublicKey
+        - name: WIREGUARD_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: wg-env
+              key: wireguardPrivateKey
+        - name: WIREGUARD_ADDRESSES
+          valueFrom:
+            secretKeyRef:
+              name: wg-env
+              key: wireguardAddresses
 service:
   main:
     controller: main
@@ -57,15 +70,6 @@ service:
         port: 8888
 
 persistence:
-  vpn-tmp:
-    enabled: true
-    type: secret
-    name: wg-conf
-    advancedMounts:
-      main:
-        copier:
-        - path: /config
-          readOnly: false
   vpn-profile:
     enabled: true
     type: persistentVolumeClaim
@@ -77,7 +81,4 @@ persistence:
       main:
         main:
         - path: /gluetun
-          readOnly: false
-        copier:
-        - path: /temp-conf
           readOnly: false
