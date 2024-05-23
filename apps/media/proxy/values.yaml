@@ -68,17 +68,3 @@ service:
     ports:
       http:
         port: 8888
-
-persistence:
-  vpn-profile:
-    enabled: true
-    type: persistentVolumeClaim
-    storageClass: longhorn
-    size: 100Mi
-    retain: true
-    accessMode: ReadWriteOnce
-    advancedMounts:
-      main:
-        main:
-        - path: /gluetun
-          readOnly: false
