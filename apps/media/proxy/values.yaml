@@ -24,6 +24,8 @@ controllers:
             cpu: 250m
             memory: 512Mi
         env:
+        - name: VPN_INTERFACE
+          value: wg0
         - name: HTTPPROXY
           value: on
         - name: VPN_SERVICE_PROVIDER
