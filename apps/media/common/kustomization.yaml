@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - cm.yaml
-- sealed-wg-conf-secret.yaml
+- sealed-wg-env-secret.yaml
 - config-pv.yaml
 - config-pvc.yaml
