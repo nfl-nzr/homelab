@@ -4,6 +4,10 @@ controllers:
     strategy: Recreate
     enabled: true
     containers:
+      sidecar:
+        image: rclone/rclone
+        pullPolicy: IfNotPresent
+        tag: 1.66
       main:
         image:
           repository: linuxserver/plex
