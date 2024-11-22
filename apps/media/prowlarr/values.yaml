@@ -69,16 +69,16 @@ persistence:
     type: secret
     name: wg-env
     advancedMounts:
-    main:
-      wireguard:
-      - path: /
-        readOnly: true
+      main:
+        wireguard:
+        - path: /
+          readOnly: true
   config:
     enabled: true
     type: persistentVolumeClaim
     existingClaim: prowlarr-pvc
     advancedMounts:
-    main:
       main:
-      - path: /config
-        readOnly: false
+        main:
+        - path: /config
+          readOnly: false
