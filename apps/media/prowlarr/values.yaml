@@ -32,6 +32,21 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
+      wireguard:
+        image: linuxserver/wireguard
+        securityContext:
+          privileged: true # Needed to configure WireGuard interfaces
+        volumeMounts:
+        - mountPath: /config/wg0.conf
+          subPath: wg0.conf
+          name: wireguard-config-secret
+        env:
+        - name: TZ
+          value: "Asia/Kolkata" # Set your timezone
+        - name: PEERDNS
+          value: "auto"
+        - name: INTERNAL_SUBNET
+          value: "10.12.12.0/24"
       flare-solver:
         image:
           repository: flaresolverr/flaresolverr
@@ -51,6 +66,13 @@ service:
       http:
         port: 8191
 persistence:
+  secret:
+    enabled: true
+    type: secret
+    name: wg-env
+    globalMounts:
+      - path: /wg
+        readOnly: true
   config:
     enabled: true
     type: persistentVolumeClaim
