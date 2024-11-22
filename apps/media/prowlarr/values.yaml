@@ -71,7 +71,7 @@ persistence:
     advancedMounts:
       main:
         wireguard:
-        - path: /
+        - path: /config
           readOnly: false
   config:
     enabled: true
