@@ -51,7 +51,6 @@ controllers:
           repository: flaresolverr/flaresolverr
           pullPolicy: IfNotPresent
           tag: latest
-
 service:
   main:
     controller: main
@@ -69,13 +68,17 @@ persistence:
     enabled: true
     type: secret
     name: wg-env
-    globalMounts:
-    - path: /wg
-      readOnly: true
+    advancedMounts:
+    main:
+      wireguard:
+      - path: /
+        readOnly: true
   config:
     enabled: true
     type: persistentVolumeClaim
     existingClaim: prowlarr-pvc
-    globalMounts:
-    - path: /config
-      readOnly: false
+    advancedMounts:
+    main:
+      main:
+      - path: /config
+        readOnly: false
