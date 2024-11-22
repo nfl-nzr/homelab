@@ -33,7 +33,10 @@ controllers:
               name: common-conf
               key: TZ
       wireguard:
-        image: linuxserver/wireguard
+        image:
+          repository: linuxserver/wireguard
+          pullPolicy: IfNotPresent
+          tag: latest
         securityContext:
           privileged: true # Needed to configure WireGuard interfaces
         env:
