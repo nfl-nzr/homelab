@@ -72,7 +72,7 @@ persistence:
       main:
         wireguard:
         - path: /
-          readOnly: true
+          readOnly: false
   config:
     enabled: true
     type: persistentVolumeClaim
