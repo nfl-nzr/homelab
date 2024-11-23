@@ -40,6 +40,18 @@ service:
       http:
         port: 7878
 
+ingress:
+  main:
+    enabled: true
+    className: "nginx"
+    hosts:
+    - host: radarr.wg
+      paths:
+      - path: /
+        service:
+          identifier: main
+          port: http
+
 persistence:
   radarr-config:
     enabled: true
