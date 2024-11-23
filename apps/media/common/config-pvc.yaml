@@ -46,7 +46,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: prowlarr-pvc
+  name: jackett-pvc
   namespace: media
 spec:
   accessModes:
