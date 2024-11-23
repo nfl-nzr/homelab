@@ -6,7 +6,7 @@ controllers:
     containers:
       main:
         image:
-          repository: linuxserver/prowlarr
+          repository: linuxserver/jackett
           pullPolicy: IfNotPresent
           tag: latest
         resources:
@@ -57,7 +57,7 @@ service:
     primary: true
     ports:
       http:
-        port: 9696
+        port: 9117
   flare-solverr:
     controller: main
     ports:
