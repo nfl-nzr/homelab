@@ -7,7 +7,7 @@ controllers:
       main:
         image:
           repository: linuxserver/plex
-          pullPolicy: IfNotPresent
+          pullPolicy: Always
           tag: 1.40.2
         env:
         - name: VERSION
