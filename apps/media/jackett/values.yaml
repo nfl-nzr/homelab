@@ -76,7 +76,7 @@ persistence:
   config:
     enabled: true
     type: persistentVolumeClaim
-    existingClaim: prowlarr-pvc
+    existingClaim: jackett-pvc
     advancedMounts:
       main:
         main:
