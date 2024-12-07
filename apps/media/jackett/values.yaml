@@ -7,7 +7,7 @@ controllers:
       main:
         image:
           repository: linuxserver/jackett
-          pullPolicy: IfNotPresent
+          pullPolicy: Always
           tag: latest
         resources:
           limits:
@@ -46,6 +46,11 @@ controllers:
           value: "auto"
         - name: INTERNAL_SUBNET
           value: "10.12.12.0/24"
+      prowlarr:
+        image:
+          repository: linuxserver/prowlarr
+          pullPolicy: Always
+          tag: latest
       flare-solver:
         image:
           repository: flaresolverr/flaresolverr
@@ -58,6 +63,11 @@ service:
     ports:
       http:
         port: 9117
+  prowlarr:
+    controller: main
+    ports:
+      http:
+        port: 9696
   flare-solverr:
     controller: main
     ports:
