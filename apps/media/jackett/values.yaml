@@ -51,11 +51,6 @@ controllers:
           repository: linuxserver/prowlarr
           pullPolicy: Always
           tag: latest
-      flare-solver:
-        image:
-          repository: flaresolverr/flaresolverr
-          pullPolicy: Always
-          tag: latest
 service:
   main:
     controller: main
@@ -68,11 +63,6 @@ service:
     ports:
       http:
         port: 9696
-  flare-solverr:
-    controller: main
-    ports:
-      http:
-        port: 8191
 persistence:
   secret:
     enabled: true
