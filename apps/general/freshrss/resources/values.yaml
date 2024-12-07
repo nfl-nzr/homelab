@@ -1,6 +1,6 @@
 image:
   repository: linuxserver/freshrss
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: 1.23.1
 controller:
   strategy: RollingUpdate

@@ -7,12 +7,12 @@ controllers:
       main:
         image:
           repository: qmcgaw/gluetun
-          pullPolicy: IfNotPresent
+          pullPolicy: Always
           tag: v3
         securityContext:
           privileged: true
           capabilities:
-            add: ["NET_ADMIN"]
+            add: [ "NET_ADMIN" ]
         resources:
           limits:
             cpu: 250m

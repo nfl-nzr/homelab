@@ -35,7 +35,7 @@ controllers:
       wireguard:
         image:
           repository: linuxserver/wireguard
-          pullPolicy: IfNotPresent
+          pullPolicy: Always
           tag: latest
         securityContext:
           privileged: true # Needed to configure WireGuard interfaces
@@ -54,7 +54,7 @@ controllers:
       flare-solver:
         image:
           repository: flaresolverr/flaresolverr
-          pullPolicy: IfNotPresent
+          pullPolicy: Always
           tag: latest
 service:
   main:
