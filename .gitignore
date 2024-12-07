@@ -1,4 +1,6 @@
 *.crt
 .vscode
 wg-conf-secret.yaml
+swap-pane
 apps/media/common/wg-conf-secret.yaml
+apps/media/common/wg-env-secret.yaml
