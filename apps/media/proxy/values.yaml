@@ -21,6 +21,8 @@ controllers:
             cpu: 250m
             memory: 512Mi
         env:
+        - name: HTTPPROXY
+          value: on
         - name: VPN_SERVICE_PROVIDER
           value: custom
         - name: VPN_TYPE
@@ -37,8 +39,6 @@ persistence:
     enabled: true
     type: secret
     name: wg-env
-    advancedMounts:
-      main:
-        wireguard:
-        - path: /gluetun/wireguard
-          readOnly: false
+    globalMounts:
+    - path: /gluetun/wireguard
+      readOnly: false
