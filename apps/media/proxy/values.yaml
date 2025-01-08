@@ -20,48 +20,6 @@ controllers:
           requests:
             cpu: 250m
             memory: 512Mi
-        env:
-        - name: VPN_INTERFACE
-          value: wg0
-        - name: HTTPPROXY
-          value: on
-        - name: VPN_SERVICE_PROVIDER
-          valueFrom:
-            secretKeyRef:
-              name: wg-env
-              key: vpnServiceProvider
-        - name: VPN_TYPE
-          valueFrom:
-            secretKeyRef:
-              name: wg-env
-              key: vpnType
-        - name: VPN_ENDPOINT_IP
-          valueFrom:
-            secretKeyRef:
-              name: wg-env
-              key: vpnEndpointIp
-        - name: VPN_ENDPOINT_PORT
-          valueFrom:
-            secretKeyRef:
-              name: wg-env
-              key: vpnEndpointPort
-        - name: WIREGUARD_PUBLIC_KEY
-          valueFrom:
-            secretKeyRef:
-              name: wg-env
-              key: wireguardPublicKey
-        - name: WIREGUARD_PRIVATE_KEY
-          valueFrom:
-            secretKeyRef:
-              name: wg-env
-              key: wireguardPrivateKey
-        - name: WIREGUARD_ALLOWED_IPS
-          value: 0.0.0.0/0
-        - name: WIREGUARD_ADDRESSES
-          valueFrom:
-            secretKeyRef:
-              name: wg-env
-              key: wireguardAddresses
 service:
   main:
     controller: main
@@ -69,3 +27,13 @@ service:
     ports:
       http:
         port: 8888
+persistence:
+  secret:
+    enabled: true
+    type: secret
+    name: wg-env
+    advancedMounts:
+      main:
+        wireguard:
+        - path: /gluetun/wireguard
+          readOnly: false
