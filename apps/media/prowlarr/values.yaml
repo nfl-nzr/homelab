@@ -32,6 +32,34 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
+      flaresolver:
+        image:
+          repository: flaresolverr/flaresolverr
+          pullPolicy: Always
+          tag: latest
+        resources:
+          limits:
+            cpu: 250m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PUID
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: NFS_PGID
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: common-conf
+              key: TZ
 service:
   main:
     controller: main
