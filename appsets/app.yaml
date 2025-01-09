@@ -28,7 +28,7 @@ spec:
   - repoURL: https://github.com/nfl-nzr/homelab.git
     path: apps/media/proxy
   - repoURL: https://github.com/nfl-nzr/homelab.git
-    path: apps/media/jackett
+    path: apps/media/prowlarr
   - repoURL: https://github.com/nfl-nzr/homelab.git
     path: apps/media/flare-solver
   - repoURL: https://github.com/nfl-nzr/homelab.git

@@ -6,7 +6,7 @@ controllers:
     containers:
       main:
         image:
-          repository: linuxserver/jackett
+          repository: linuxserver/prowlarr
           pullPolicy: Always
           tag: latest
         resources:
@@ -38,17 +38,12 @@ service:
     primary: true
     ports:
       http:
-        port: 9117
-  prowlarr:
-    controller: main
-    ports:
-      http:
         port: 9696
 persistence:
   config:
     enabled: true
     type: persistentVolumeClaim
-    existingClaim: jackett-pvc
+    existingClaim: prowlarr-pvc
     advancedMounts:
       main:
         main:
