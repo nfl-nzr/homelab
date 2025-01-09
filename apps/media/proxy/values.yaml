@@ -23,8 +23,6 @@ controllers:
         env:
         - name: HTTPPROXY
           value: on
-        - name: DNS_KEEP_NAMESERVER
-          value: on
         - name: VPN_SERVICE_PROVIDER
           value: custom
         - name: VPN_TYPE
