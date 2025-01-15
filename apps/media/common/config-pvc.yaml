@@ -23,7 +23,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 500Mi
+      storage: 2.5Gi
   storageClassName: longhorn
 ---
 # DL Claim
