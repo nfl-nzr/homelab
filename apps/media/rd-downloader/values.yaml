@@ -44,7 +44,7 @@ persistence:
   config:
     enabled: true
     type: persistentVolumeClaim
-    existingClaim: dl-pvc
+    existingClaim: rdt-pvc
     globalMounts:
     - path: /data/db
       readOnly: false

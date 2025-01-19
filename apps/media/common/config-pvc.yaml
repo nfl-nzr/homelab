@@ -26,6 +26,20 @@ spec:
       storage: 2.5Gi
   storageClassName: longhorn
 ---
+# RDT Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rdt-pvc
+  namespace: media
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi
+  storageClassName: longhorn
+---
 # Transmission Claim
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -37,7 +51,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 500Mi
+      storage: 512Mi
   storageClassName: longhorn
 ---
 # PROWLARR Claim
