@@ -26,11 +26,11 @@ spec:
       storage: 2.5Gi
   storageClassName: longhorn
 ---
-# DL Claim
+# Transmission Claim
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: dl-pvc
+  name: transmission-pvc
   namespace: media
 spec:
   accessModes:

@@ -43,6 +43,7 @@ persistence:
   config:
     enabled: true
     type: persistentVolumeClaim
+    existingClaim: transmission-pvc
     size: 512Mi
     retain: true
     accessMode: ReadWriteOnce
