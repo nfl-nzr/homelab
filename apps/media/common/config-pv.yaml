@@ -1,16 +1,6 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    retry:
-      limit: 5
-      backoff:
-        duration: 5s
-        maxDuration: 3m0s
-        factor: 2
   name: config-pv
   namespace: media
 spec:
