@@ -32,6 +32,18 @@ controllers:
             configMapKeyRef:
               name: common-conf
               key: TZ
+
+ingress:
+  main:
+    enabled: true
+    className: "nginx"
+    hosts:
+    - host: overseer.wg
+      paths:
+      - path: /
+        service:
+          identifier: main
+
 service:
   main:
     controller: main

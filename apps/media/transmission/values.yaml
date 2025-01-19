@@ -39,6 +39,17 @@ service:
       http:
         port: 9091
 
+ingress:
+  main:
+    enabled: true
+    className: "nginx"
+    hosts:
+    - host: transmission.wg
+      paths:
+      - path: /
+        service:
+          identifier: main
+          port: http
 persistence:
   config:
     enabled: true
