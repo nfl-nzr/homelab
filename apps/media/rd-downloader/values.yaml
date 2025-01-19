@@ -8,7 +8,7 @@ controllers:
         image:
           repository: rogerfar/rdtclient
           pullPolicy: Always
-          tag: sha-d5aaad8
+          tag: latest
         resources:
           limits:
             cpu: 250m
