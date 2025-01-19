@@ -45,8 +45,6 @@ persistence:
     type: persistentVolumeClaim
     existingClaim: transmission-pvc
     size: 512Mi
-    retain: true
-    accessMode: ReadWriteOnce
   nfs-movies:
     enabled: true
     type: nfs
