@@ -40,6 +40,10 @@ service:
         port: 9091
 
 persistence:
+  config:
+    enabled: true
+    type: persistentVolumeClaim
+    existingClaim: transmission-pvc
   nfs-movies:
     enabled: true
     type: nfs
